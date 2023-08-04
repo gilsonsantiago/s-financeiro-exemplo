@@ -26,7 +26,6 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 //die();
 
-
 Sessao::sessaoInit();
 
 if(isset($_SESSION['user_id']))
