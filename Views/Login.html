@@ -1,0 +1,108 @@
+{% extends "Site.html" %}
+
+{% block nomeusuario %} {{nomeusuario }} {% endblock %}
+
+{% block conteudo %}
+     
+<div class="container">
+    
+    <br>
+    <br>
+
+    <div class="row" >
+
+        <div class="col-sm-4">
+
+      </div>
+
+        <div class="col-sm-4" style=" box-shadow: -4px 2px 38px 0px rgba(0,0,0,0.41);
+    -webkit-box-shadow: -4px 2px 38px 0px rgba(0,0,0,0.41);
+    -moz-box-shadow: -4px 2px 38px 0px rgba(0,0,0,0.41);">
+           
+                     
+            <div align ="center">
+                
+                <br>
+                  
+                   <img src="Imagens/cadeado.png" alt=""> 
+                             
+                   <h2> Login </h2>
+                 
+                 <hr>
+                
+            </div>               
+
+            <form class="form-horizontal" method="post" action="/logarusuario" name="formlogin" >
+
+                <div class="form-group">
+
+                    <label><b>Usuário:</b></label>  
+                 
+                    <input  
+                       style="text-transform: uppercase" 
+                       id="usuario" 
+                       name="usuario" 
+                       type="text" 
+                       placeholder="Usuario" 
+                       value="{{usuario}}" 
+                       class="form-control input-md" 
+                       autocomplete="off"  
+                       required>
+         
+                </div>
+
+
+                <!-- Password input-->
+
+                <div class="form-group">
+
+                    <label><b>Senha:</b></label>
+
+                   <input 
+                       id="senha" 
+                       name="senha" 
+                       type="password" 
+                       placeholder="Senha" 
+                       value="{{senha}}"
+                       class="form-control input-md" 
+                       autocomplete="off" 
+                       required>
+
+                </div>
+
+                <!-- Button -->
+
+                <div class="form-group">
+         
+                 <button 
+                    id="acessar" 
+                    name="acessar" 
+                    class="btn btn-success btn-block" 
+                    type="submit"> 
+                    Acessar 
+                </button>
+
+                </div> 
+                 
+            </form> 
+
+            <div align="center">
+
+                  <a href="/cadastrarnovo">Cadastra-se</a>
+              
+            </div>
+
+            <br>
+
+          
+
+        </div>
+
+        <div class="col-sm-4">
+
+        </div>
+
+ </div> 
+
+
+{% endblock %}

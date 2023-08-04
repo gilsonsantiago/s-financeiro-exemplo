@@ -1,0 +1,131 @@
+{% extends "Site.html" %}
+
+{% block nomeusuario %} {{ nomeusuario }} {% endblock %}
+
+{% block conteudo %}
+
+<br>
+
+<div class="container">
+
+   <h1 align="center"> LISTAGEM DE CONTAS </h1>
+  
+</div>
+
+<hr>
+
+<a href="/cadastrarcontas" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cadastrar</a>
+
+ <a href="/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Retornar</a>
+
+<hr>
+
+<div class="table-responsive-md">
+
+          <table class="table table-striped" class="display" id="minhaTabela">
+
+                <thead>
+
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Descricao</th>   
+                        <th scope="col"></th> 
+                        <th scope="col">Saldo</th> 
+                        <th scope="col">Ações</th>   
+                        <th scope="col"></th>  
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        {% for doc in lista %}
+          
+                            <td align="center"> {{ doc.id }}</td>
+
+                            <td> {{ doc.descricao }} </td>
+
+                            <td> </td>
+
+                            {% if doc.saldo != 0.00 %}   
+
+                               <td align="right"> {{ doc.saldo  | number_format(2, ',', '.')}} </td>
+
+                            {% else %}
+
+                               <td align="right">  - </td>
+
+                            {% endif %}
+
+                           <td>
+
+                                <form action="/editarconta" onsubmit="" method="POST" name="formedita">
+
+                                    <input type="hidden" name="idedita" value="{{ doc.id }}">
+     
+                                        <button 
+                                          type="submit" 
+                                          id="edita" 
+                                          name="edita" 
+                                          class="btn btn-primary btn-sm"  
+                                          value="editar">
+                                          Editar
+                                        </button>   
+                                  
+                                </form>
+                             
+                           </td>
+
+                           <td>
+
+                               <form action="/excluirconta" onsubmit="return apagar()" method="POST" name="formdeleta">  
+                                 
+                                      <input type="hidden" name="idapaga" value="{{ doc.id }}">
+     
+                                        <button 
+                                          type="submit" 
+                                          id="apaga" 
+                                          name="apaga" 
+                                          class="btn btn-danger btn-sm"  
+                                          value="apagar">
+                                          Excluir
+                                        </button>    
+                                 
+                                </form>
+                                   
+                           </td>
+
+                          <td>
+
+                               <form action="/detalheconta" onsubmit="return apagar()" method="POST" name="formdeleta">  
+                                 
+                                      <input type="hidden" name="idapaga" value="{{ doc.id }}">
+     
+                                        <button 
+                                          type="submit" 
+                                          id="detalhe" 
+                                          name="detalhe" 
+                                          class="btn btn-info btn-sm"  
+                                          value="detalhe">
+                                          Detalhes
+                                        </button>    
+                                 
+                                </form>
+                                   
+                           </td>       
+                      
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            <hr>
+       
+        </div>
+
+ {% endblock %}

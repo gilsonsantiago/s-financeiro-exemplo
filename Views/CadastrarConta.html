@@ -1,0 +1,95 @@
+{% extends "Site.html" %}
+
+{% block nomeusuario %} {{nomeusuario }} {% endblock %}
+
+{% block conteudo %}
+     
+  <div class="container">
+
+    <br>
+    <!--  
+    
+    style=" box-shadow: -4px 2px 38px 0px rgba(0,0,0,0.41);
+    -webkit-box-shadow: -4px 2px 38px 0px rgba(0,0,0,0.41);
+    -moz-box-shadow: -4px 2px 38px 0px rgba(0,0,0,0.41);"
+    
+    -->
+    <div class="card text-center" >
+
+        <div class="card-header">
+
+            <h2>{{titulo}}</h2>
+
+        </div>
+
+        <div class="card-body">
+
+            <h5 class="card-title">Dados da Conta </h5>
+
+                <form action="{{urllink}}" method="post">
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+
+                            <label for="descricao">Descrição da Conta</label>
+
+                            <input type="text" name="descricao" id="descricao" class="form-control" style="text-transform: uppercase" value="{{ conta.descricao }}" required>
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+
+
+                            <label for="status">Tipo de Conta</label>
+  
+                              <select class="custom-select" id="tipo" name="tipo" value="{{ conta.tipo }}" required>
+  
+                                  {% for doct in tipos %}  
+  
+                                   {% if doct.indice == conta.tipo %}                              
+  
+                                      <option value="{{ doct.indice }}" selected >{{ doct.descricao }}</option>
+  
+                                    {% else %}
+  
+                                      <option value="{{ doct.indice }}">{{ doct.descricao }}</option>
+  
+                                    {% endif %}
+                                
+                                  {% endfor %} 
+  
+                              </select>
+                          
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                      <input type="hidden" name="idcadastro" value="{{ conta.id }}"> 
+
+                      <button type="submit" name="cadastrarconta" id="cadastrarconta" class="btn btn-primary">Salvar</button>
+  
+                      <a href="/contas" name="retornarconta" id="retornaconta" class="btn btn-primary role="button">Retornar</a>
+                      
+                    </div>
+
+                </form>
+
+
+        </div>
+
+        <div class="card-footer text-muted">
+
+            Uso exclusivo de Administradores
+
+        </div>
+
+    </div>
+
+
+  </div>
+
+{% endblock %}
+     

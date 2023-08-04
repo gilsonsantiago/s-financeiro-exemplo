@@ -1,0 +1,132 @@
+{% extends "Site.html" %}
+
+{% block nomeusuario %} {{nomeusuario }} {% endblock %}
+
+{% block conteudo %}
+     
+  <div class="container">
+
+    <br>
+    <!--  
+    
+    style=" box-shadow: -4px 2px 38px 0px rgba(0,0,0,0.41);
+    -webkit-box-shadow: -4px 2px 38px 0px rgba(0,0,0,0.41);
+    -moz-box-shadow: -4px 2px 38px 0px rgba(0,0,0,0.41);"
+    
+    -->
+    <div class="card text-center" >
+
+        <div class="card-header">
+
+            <h2>{{titulo}}</h2>
+
+        </div>
+
+        <div class="card-body">
+
+            <h5 class="card-title">lançamentos em Contas </h5>
+
+                <form action="{{urllink}}" method="post">
+            
+                   <div class="form-row">  
+
+                        <div class="form-group col-md-8">
+
+                            <label for="id_conta">Cadastro de Contas </label>
+  
+                              <select class="custom-select" id="id_conta" name="id_conta" value="{{ movto.id_conta }}" required>
+  
+                                  {% for doct in conta %}  
+
+                                     {% if doct.id == movto.id_conta %}  
+    
+                                        <option value="{{ doct.id }}" selected >| Conta tipo: {{ doct.tipo }} | Cód.: {{ doct.id }} - {{ doct.descricao }}</option>
+  
+                                     {% else %}
+
+                                       <option value="{{ doct.id }}">|Conta tipo: {{ doct.tipo }} | Cód.: {{ doct.id }} - {{ doct.descricao }}</option>
+  
+                                     {% endif %}
+                            
+                                       
+                                  {% endfor %} 
+  
+                              </select>
+                          
+                        </div>  
+              
+                     
+                        <div class="form-group col-md-4">
+
+                            <label for="opera">Natureza do Lançamento </label>
+  
+                              <select class="custom-select" id="opera" name="opera" value="" required>
+  
+                                  {% for doct in operacao %}  
+  
+                                     <option value="{{ doct.indice }}" selected >{{ doct.descricao }}</option>                                
+                                
+                                  {% endfor %} 
+  
+                              </select>
+                           
+                        </div>
+              
+
+                   </div>
+
+                         
+                   <div class="form-row">  
+
+                        <div class="form-group col-md-6">
+
+                            <label for="data">Data do Lançamento</label>
+
+                            <input type="date" name="data" id="data" class="form-control" 
+                                   style="text-transform: uppercase" value="{{ movto.data }}" required placeholder="Digite a Data:">
+               
+
+                        </div>
+
+                        <div class="form-group col-md-6">
+
+                           <label for="valor">Valor do Lançamento R$</label>
+
+                            <input type="number" name="valor" id="valor" class="form-control" 
+                                   style="text-transform: uppercase" value="{{ movto.valor }}" required placeholder="Digite o valor do Lançamento:">
+
+                        </div>
+
+                     
+                   </div>
+
+                   <hr>
+                       
+                    <div>
+
+                      <input type="hidden" name="idcadastro" value="{{ movto.id }}"> 
+
+                      <button type="submit" name="cadastrarmovto" id="cadastrarmovto" class="btn btn-primary">Salvar</button>
+  
+                      <a href="/movto" name="retornamovto" id="retornamovto" class="btn btn-primary role="button">Retornar</a>
+                      
+                    </div>
+
+                </form>
+
+
+        </div>
+
+        <div class="card-footer text-muted">
+
+            Uso exclusivo de Administradores
+
+        </div>
+
+    </div>
+
+
+  </div>
+
+{% endblock %}
+     

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--
+
+-->
+<html  lang="pt-BR">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>GCF-2023</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.css">             
+     
+    </head>
+
+    <body>
+
+      <div class="Container">
+
+          <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+             
+              <a class="navbar-brand" href="#">Finanças Doméstica</a>
+    
+                  <ul class="navbar-nav mr-auto">
+  
+                        <li class="nav-item active">
+  
+                          <a class="nav-link" href= "/">Mural <span class="sr-only">(current)</span></a>
+  
+                      </li>  
+  
+                     
+                      <li class="nav-item active">
+  
+                          <a class="nav-link" href= "/login">Login <span class="sr-only">(current)</span></a>
+  
+                      </li>  
+  
+                     
+
+                      <li class="nav-item active">
+  
+                          <a class="nav-link" href= "/listarusuario">Usuários<span class="sr-only">(current)</span></a>
+  
+                      </li>  
+
+                          <li class="nav-item active">
+  
+                          <a class="nav-link" href= "/contas">Contas<span class="sr-only">(current)</span></a>
+  
+                      </li>  
+
+  
+                      <li class="nav-item active">
+  
+                          <a class="nav-link" href= "/movto">Movimento<span class="sr-only">(current)</span></a>
+  
+                      </li>  
+  
+                      <li class="nav-item active">
+  
+                          <a class="nav-link" href= "/relatorios">Relatórios<span class="sr-only">(current)</span></a>
+  
+                      </li> 
+  
+                  </ul>
+  
+                  <ul class="navbar-nav mr-auto  justify-content-end">
+
+                        <li class="nav-item active">
+    
+                            <a class="nav-link" href= "/usuariologout">Logout <b>[Sair] </b><span class="sr-only">(current)</span></a>
+    
+                        </li> 
+                     
+  
+                        <li class="nav-item active">
+    
+                            <a class="nav-link" href= "#"><b>Usuário: 
+                              
+                             {% block nomeusuario %} {% endblock %} 
+                            
+                            </b><span class="sr-only">(current)</span></a>
+    
+                        </li> 
+  
+                  </ul>
+   
+            </div>
+  
+          </nav>
+
+       </div> 
+
+      
+        <div class="container">
+
+            {% block conteudo %}
+
+            {% endblock %}
+
+        </div>
+
+        <div class="container">
+
+             {{ MENSAGEM }}
+
+        </div>
+            
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+        <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" ></script>
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script>
+
+           function apagar() {  return confirm ("Deseja realmente apagar o registro ") ;  }
+             
+        </script> 
+              
+    </body>
+
+
+</html>

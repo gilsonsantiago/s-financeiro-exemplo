@@ -1,0 +1,84 @@
+{% extends "Site.html" %}
+
+{% block nomeusuario %} {{nomeusuario }} {% endblock %}
+
+{% block conteudo %}
+     
+  <br>
+
+  <div class="container"  >
+
+      <form class="form-horizontal" method="post" action="/demonstrativo" name="formdata" >
+          
+          <br>
+
+          <h1 align="center"  style="background: buttonface;">EMISSÃO DE RELATÓRIOS </h1>
+
+          <hr>
+
+          <div class="form-row">
+
+              <div class="form-group col-md-2">
+
+                  <label for="data">Data:</label> 
+
+                  <input 
+                    id="datapublica" 
+                    name="datapublica" 
+                    type="date" 
+                    placeholder="Exemplo: 31-12-2021 " 
+                    class="form-control input-md" 
+                    autocomplete="off" 
+                    required ="" 
+                  >
+
+              </div> 
+
+          </div>   
+
+          <hr>
+
+          <div class="form-row">
+
+              <div class="form-group col-md-12">
+
+                 <button 
+                   type="submit" 
+                   name="balancete"  
+                   id="balancete"  
+                   class="btn btn-primary" 
+                   value="balanceteconta">
+                   Balancete
+                 </button> 
+
+                 <button 
+                   type="submit" 
+                   name="balancomensal"  
+                   id="balancomensal"  
+                   class="btn btn-primary"  
+                   value="demons">
+                   Balanço Mensal
+                 </button> 
+                
+                 <button 
+                   type="submit" 
+                   name="relamovto"  
+                   id="relamovto"  
+                   class="btn btn-primary"  
+                   value="competencia">
+                  Competência
+                 </button> 
+
+              </div>
+
+          </div>
+
+      </form>
+
+      <hr>
+
+  </div>
+
+
+{% endblock %}
+     

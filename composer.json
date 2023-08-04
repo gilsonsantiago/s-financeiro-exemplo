@@ -1,0 +1,23 @@
+{
+    "name": "gsthiago/apidoc",
+    "description": "Gerenciador Financeiro Domestico",
+    "type": "n",
+    "license": "MIT",
+    "require": {
+        "twig/twig": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App\\",
+            "Biblioteca\\" : "Biblioteca\\",
+            "Core\\" : "Core\\"
+        },
+        "files": [
+           "Biblioteca/Config.php",
+           "Biblioteca/Conexao.php",
+           "Biblioteca/Telas.php",
+           "Biblioteca/Utils.php",
+           "Biblioteca/Data.php"
+        ]
+    }
+}

@@ -1,0 +1,105 @@
+{% extends "Site.html" %}
+
+{% block nomeusuario %} {{nomeusuario }} {% endblock %}
+
+{% block conteudo %}
+
+<br>
+
+<div class="container">
+
+   <h1 align="center"> LANÇAMENTOS DE RECEITAS E DESPESAS </h1>
+  
+</div>
+
+<hr>
+
+ <a href="/cadastrarmovtos" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cadastrar</a>
+
+ <a href="/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Retornar</a>
+
+<hr>
+
+<div class="table-responsive-md">
+
+          <table class="table table-striped" class="display" id="minhaTabela">
+
+                <thead>
+
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Conta</th>   
+                        <th scope="col">Data</th> 
+                        <th align="center" scope="col">Valor</th> 
+                        <th scope="col">Ações</th>   
+                        <th scope="col"></th>  
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        {% for doc in lista %}
+          
+                            <td align="center"> {{ doc.id }}</td>
+
+                            <td> {{ doc.id_conta }} - {{doc.descricao }} </td>
+
+                            <td> {{ doc.data | date("d/m/Y") }} </td>
+
+                            <td align="right"> {{ doc.valor | number_format(2, ',', '.')}} </td>
+
+                           <td>
+
+                                <form action="/editarmovto" onsubmit="" method="POST" name="formedita">
+
+                                    <input type="hidden" name="idedita" value="{{ doc.id }}">
+     
+                                        <button 
+                                          type="submit" 
+                                          id="edita" 
+                                          name="edita" 
+                                          class="btn btn-primary btn-sm"  
+                                          value="editar">
+                                          Editar
+                                        </button>   
+                                  
+                                </form>
+                             
+                           </td>
+
+                           <td>
+
+                               <form action="/excluirmovto" onsubmit="return apagar()" method="POST" name="formdeleta">  
+                                 
+                                      <input type="hidden" name="idapaga" value="{{ doc.id }}">
+     
+                                        <button 
+                                          type="submit" 
+                                          id="apaga" 
+                                          name="apaga" 
+                                          class="btn btn-danger btn-sm"  
+                                          value="apagar">
+                                          Excluir
+                                        </button>    
+                                 
+                                </form>
+                                   
+                           </td>
+
+
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            <hr>
+       
+        </div>
+
+ {% endblock %}
