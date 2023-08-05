@@ -21,7 +21,7 @@ try {
   );
   
   // Bind values directly to statement variables
-  $stmt->bindValue(':nome', 'Elizabete Pereira Tavares', SQLITE3_TEXT);
+  $stmt->bindValue(':nome', 'Elizabetes', SQLITE3_TEXT);
   $stmt->bindValue(':login', 'ELIZABETE', SQLITE3_TEXT);
   $stmt->bindValue(':senha', '654321', SQLITE3_TEXT);
   $stmt->bindValue(':status', 'A', SQLITE3_TEXT);

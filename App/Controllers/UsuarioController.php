@@ -11,11 +11,6 @@ class UsuarioController{
    $usuario->id =  (int) Sessao::getDadosSessao()['id'];   
    $status      =  (int) Sessao::getDadosSessao()['status']; 
 
-    // echo $status . '<br>';
-    // echo Sessao::getDadosSessao()['nome']  . '<br>'; 
-    // echo Sessao::getDadosSessao()['id']. '<br>'; 
-    // die(); 
-
    $resultado = [];
     
    if($status == 3)
@@ -29,21 +24,16 @@ class UsuarioController{
 
      $resultado = [ array (
        'id' => $usu['id'],
-                    'nome' => $usu['nome'],
-                    'login' => $usu['login'],
-                    'senha' => '',
+                    'nome'   => $usu['nome'],
+                    'login'  => $usu['login'],
+                    'senha'  => '',
                     'status' => $usu['status']
                    )                    
                  ];
      
    }  
 
-  // echo count($resultado) . '<br>';
-
-  // var_dump($resultado); 
-
-  // die(); 
-
+ 
    $lista = array(
      'nomeusuario' => Sessao::getDadosSessao()['nome'],
      'lista' => $resultado,
@@ -208,11 +198,11 @@ class UsuarioController{
   public function gravar()
   {
   
-     $senha     = filter_input(INPUT_POST, 'senha'  , FILTER_DEFAULT); 
+     $senha           = filter_input(INPUT_POST, 'senha'  , FILTER_DEFAULT); 
     
-     $novasenha = password_hash(trim($senha), PASSWORD_DEFAULT);
+     $novasenha       = password_hash(trim($senha), PASSWORD_DEFAULT);
     
-     $usuario = new UsuarioModel();
+     $usuario         = new UsuarioModel();
     
      $usuario->nome   = filter_input(INPUT_POST, 'nome', FILTER_DEFAULT);
     
@@ -222,11 +212,7 @@ class UsuarioController{
     
      $usuario->status = filter_input(INPUT_POST, 'status', FILTER_DEFAULT);
 
-     //dd($usuario);
-
-     $numero = $usuario->salvar();
-
-    // dd($numero);
+     $numero          = $usuario->salvar();
 
      header('Location: /listarusuario');
 
@@ -247,11 +233,11 @@ class UsuarioController{
      $dado = $usuario->findId();     
             
      $lista = [
-        'situacao' => situacao(),
+        'situacao'    => situacao(),
         'nomeusuario' => Sessao::getDadosSessao()['nome'],
-        'usuario' => $dado,
-        'titulo' => 'Alterar Usuário',
-        'urllink' => '/atualizarusuario'
+        'usuario'     => $dado,
+        'titulo'      => 'Alterar Usuário',
+        'urllink'     => '/atualizarusuario'
      ];
 
      $status = (int) Sessao::getDadosSessao()['status'];
@@ -271,10 +257,10 @@ class UsuarioController{
   public function atualiza()
   {
  
-     $senha     = filter_input(INPUT_POST, 'senha'  , FILTER_DEFAULT);     
-     $novasenha = password_hash(trim($senha), PASSWORD_DEFAULT);
+     $senha           = filter_input(INPUT_POST, 'senha'  , FILTER_DEFAULT);     
+     $novasenha       = password_hash(trim($senha), PASSWORD_DEFAULT);
     
-     $usuario = new UsuarioModel();
+     $usuario         = new UsuarioModel();
 
      $usuario->id     = filter_input(INPUT_POST, 'idedita', FILTER_DEFAULT);    
      $usuario->nome   = filter_input(INPUT_POST, 'nome'   , FILTER_DEFAULT);  

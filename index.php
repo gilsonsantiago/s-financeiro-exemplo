@@ -19,12 +19,18 @@ require_once('App/Models/RelatorioModel.php');
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 
-//require_once('Outros/CriarUsuario.php');
-//require_once('Outros/CriarContas.php');
-//require_once('Outros/CriarMovimento.php');
-//require_once('Outros/Migracao.php');
-
-//die();
+if (!file_exists('database.sqlite'))
+{
+ 
+    //require_once('Outros/CriarUsuario.php');
+    //require_once('Outros/CriarContas.php');
+    //require_once('Outros/CriarMovimento.php');
+  
+    require_once('Outros/Migracao.php');    
+  
+    die();
+  
+} 
 
 Sessao::sessaoInit();
 

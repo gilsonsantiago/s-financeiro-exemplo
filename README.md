@@ -13,3 +13,10 @@ Each time this example is run, a sqlite3 database is created or appended to. A s
 ## Thanks
 
 Contents of this examples were taken from [this tutorial](https://www.if-not-true-then-false.com/2012/php-pdo-sqlite3-example/).
+
+
+## Link do Aplicativo em execução
+
+https://s-financeiro.gilsonsantiago.repl.co
+
+
