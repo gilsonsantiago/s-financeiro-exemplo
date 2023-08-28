@@ -7,20 +7,8 @@ class RelatorioController{
   public function exibir()
   {
 
-   // $relatorio = New RelatorioModel;
-
-   $saldo = new RelatorioModel;
-
-   $resultado = $saldo->calcularSaldoContas();
-
-   //var_dump($resultado);
-   //die();
-    
-   $resultado = []; // $conta->findAll();
-
    $lista = array(
-     'nomeusuario' => Sessao::getDadosSessao()['nome'],
-     'lista' => $resultado
+     'nomeusuario' => Sessao::getDadosSessao()['nome']
    );
       
     printaTela('Relatorios.html', $lista);   
@@ -31,17 +19,47 @@ class RelatorioController{
   /********************************************************************/
   public function balancete()
   {
+
+
+    $conta = New ContaModel;  
+    $saldo = new RelatorioModel;            
+             
+    $resultado = $conta->findAll();
  
     if(isset($_POST['balancete']))
     {
 
-         $conta = New ContaModel;  
-         $saldo = new RelatorioModel;            
-             
-         $resultado = $conta->findAll();
-
+         $saldo->calcularSaldoContas();
+      
          $receitas = $saldo->calcularTotal($resultado)['receitas'];
          $despesas = $saldo->calcularTotal($resultado)['despesas'];
+      
+         $caixa      = ($receitas - $despesas);
+         $totalgeral = $receitas;
+      
+         $lista = array(
+           'nomeusuario'   => Sessao::getDadosSessao()['nome'],
+           'totalreceitas' => $receitas,
+           'totaldespesas' => $despesas,
+           'saldoemcaixa'  => $caixa,
+           'totalgeral'    => $totalgeral,
+           'lista'         => $resultado
+         );
+            
+         printaTela('Balancete.html', $lista);
+      
+    }  
+    elseif (isset($_POST['balancetemensal']))
+    {
+
+         $data = filter_input(INPUT_POST, 'datapublica', FILTER_DEFAULT);
+              
+         $resultado = $saldo->calcularSaldoContasMensal($data);
+
+         die();
+     
+         $receitas = $saldo->calcularTotal($resultado, $data)['receitas'];
+         $despesas = $saldo->calcularTotal($resultado, $data)['despesas'];
       
          $caixa      = ($receitas - $despesas);
          $totalgeral = $receitas;
@@ -55,14 +73,13 @@ class RelatorioController{
            'lista'         => $resultado
          );
             
-         printaTela('Balancete.html', $lista);
+         printaTela('BalanceteMensal.html', $lista);
       
-    }  
+    }     
 
   }
 
 
-  
   
 
 

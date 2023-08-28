@@ -4,6 +4,7 @@ require_once('vendor/autoload.php');
 
 require_once('Biblioteca/Conexao.php');
 require_once('Biblioteca/Sessao.php');
+//require_once('Biblioteca/Data.php');
 
 require_once('App/Controllers/UsuarioController.php');
 require_once('App/Controllers/HomeController.php');

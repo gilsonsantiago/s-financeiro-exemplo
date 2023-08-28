@@ -1,0 +1,324 @@
+{% extends "Site.html" %}
+
+{% block nomeusuario %} {{nomeusuario }} {% endblock %}
+
+{% block conteudo %}
+
+<br>
+
+<div class="container">
+
+   <h1 align="center"> BALANCETE MENSAL DE CONTAS </h1>
+
+   <h5 align="center"> Usuário: {{ nomeusuario }} </h5>
+  
+</div>
+
+<hr>
+
+ <a href="/relatorios" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Retornar</a>
+
+<hr>
+
+ <div class="form-row">
+
+        <div class="form-group col-md-6">
+    
+          <div class="table-responsive-md">
+    
+               <h4 align="center">CONTAS DE DESPESAS </h4>
+      
+                <table class="table table-striped" class="display" id="minhaTabela">
+      
+                        <thead>
+        
+                              <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Descricao</th>          
+                                  <th scope="col">Saldo</th> 
+                              </tr>
+        
+                        </thead>
+        
+                        <tbody>
+                          
+                            {% for doc in lista %}
+        
+                              {% if doc.tipo == 2 %}   
+                          
+                               <tr>
+          
+                                    {% if doc.saldo > 0.00 %}   
+
+                                       <td align="center"> {{ doc.id }} </td>
+        
+                                       <td> {{ doc.descricao }} </td>
+        
+                                       <td align="right"> {{ doc.saldo  | number_format(2, ',', '.')}} </td>
+                       
+        
+                                    {% endif %}
+        
+                                   </td>
+        
+                                </tr>
+        
+                              {% endif %}
+        
+                            {% endfor %}
+        
+                        </tbody>
+      
+                 </table>
+    
+                 <hr>
+  
+           
+        </div>
+    
+         <!--       --> 
+         
+       </div>
+
+    
+       <div class="form-group col-md-6">
+    
+          <div class="table-responsive-md">
+    
+              <h4 align="center"> CONTAS DE RECEITAS </h4>
+    
+              <table class="table table-striped" class="display" id="minhaTabela">
+    
+                    <thead>
+    
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Descricao</th>   
+                            <th scope="col">Saldo</th>
+                        </tr>
+    
+                    </thead>
+    
+                    <tbody>
+        
+                           {% for doc in lista %}
+    
+                          {% if doc.tipo == 1 %}   
+                      
+                           <tr>
+                           
+                                     {% if doc.saldo > 0.00 %}   
+
+                                       <td align="center"> {{ doc.id }} </td>
+        
+                                       <td> {{ doc.descricao }} </td>
+        
+                                       <td align="right"> {{ doc.saldo  | number_format(2, ',', '.')}} </td>
+        
+                                    {% endif %}
+    
+                               </td>
+    
+                            </tr>
+    
+                          {% endif %}
+    
+                        {% endfor %}
+    
+                    </tbody>
+    
+               </table>
+    
+               <hr>
+           
+         </div>
+         
+       </div>    
+
+ </div>
+
+ <div class="form-row">
+
+        <div class="form-group col-md-6">
+    
+          <div class="table-responsive-md">
+            
+              <table class="table table-striped" class="display" id="minhaTabela">
+    
+                 <tbody>
+                      
+                      <tr>
+                           
+                        <td></td>
+                        
+                        <td><b>SUB-TOTAL DAS DESPESAS</b> </td>
+                        
+                        <td align="right"><b>{{totaldespesas | number_format(2, ',', '.')}} </b>  </td>                
+    
+                      </tr>
+    
+                    </tbody>
+    
+               </table>
+         
+            
+          </div>
+          
+        </div>  
+
+      <div class="form-group col-md-6">
+    
+          <div class="table-responsive-md">
+
+             <table class="table table-striped" class="display" id="minhaTabela">
+    
+                 <tbody>
+                      
+                      <tr>
+                           
+                         <td></td>
+                        
+                         <td><b>SUB-TOTAL DAS RECEITAS</b> </td>
+                        
+                         <td align="right"><b>{{totalreceitas | number_format(2, ',', '.')}} </b>  </td>                  
+    
+                      </tr>
+    
+                    </tbody>
+    
+               </table>
+            
+          </div>
+          
+        </div>  
+
+ </div>  
+
+ <div class="form-row">
+
+        <div class="form-group col-md-6">
+    
+          <div class="table-responsive-md">
+            
+              <table class="table table-striped" class="display" id="minhaTabela">
+    
+                 <tbody>
+                      
+                      <tr>
+                           
+                        <td></td>
+                        
+                        <td><b>SALDO EM CAIXA</b> </td>
+                        
+                        <td align="right"><b>{{ saldoemcaixa | number_format(2, ',', '.')}} </b>  </td>                
+    
+                      </tr>
+    
+                    </tbody>
+    
+               </table>
+         
+            
+          </div>
+          
+        </div>  
+
+      <div class="form-group col-md-6">
+    
+          <div class="table-responsive-md">
+
+             <table class="table table-striped" class="display" id="minhaTabela">
+    
+                 <tbody>
+                      
+                      <tr>
+                           
+                         <td></td>
+                        
+                         <td></b> </td>
+                        
+                         <td align="right"></td>                  
+    
+                      </tr>
+    
+                    </tbody>
+    
+               </table>
+            
+          </div>
+          
+        </div>  
+
+ </div>  
+
+<div class="form-row">
+
+        <div class="form-group col-md-6">
+    
+          <div class="table-responsive-md">
+            
+              <table class="table table-striped" class="display" id="minhaTabela">
+    
+                 <tbody>
+                      
+                      <tr>
+                           
+                        <td></td>
+                        
+                        <td><b>FECHAMENTO DO MOVIMENTO </b> </td>
+                        
+                        <td align="right"><b>{{ totalgeral | number_format(2, ',', '.')}} </b>  </td>                
+    
+                      </tr>
+    
+                    </tbody>
+    
+               </table>
+         
+            
+          </div>
+          
+        </div>  
+
+      <div class="form-group col-md-6">
+    
+          <div class="table-responsive-md">
+
+             <table class="table table-striped" class="display" id="minhaTabela">
+    
+                 <tbody>
+                      
+                      <tr>
+                           
+                         <td></td>
+                          
+                        <td><b>FECHAMENTO DO MOVIMENTO </b> </td>
+                        
+                        <td align="right"><b>{{ totalgeral | number_format(2, ',', '.')}} </b>  </td>               
+    
+                      </tr>
+    
+                    </tbody>
+    
+               </table>
+            
+          </div>
+          
+        </div>  
+
+ </div>  
+
+<hr>
+
+ <div class="container">
+        
+        <br>
+        
+          <input  class="btn btn-block" type="button" value="Imprimir a Página" onClick="window.print()"/>
+        
+    </div>
+
+<hr>
+
+
+ {% endblock %}
